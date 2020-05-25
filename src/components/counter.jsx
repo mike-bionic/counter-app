@@ -5,19 +5,10 @@ class Counter extends Component {
         count: 0,
     };
 
-    // //constructor method of binding data (old)
-    // constructor() {
-    //     // the base contructor
-    //     super();
-    //     // binding data
-    //     this.handleIncrement = this.handleIncrement.bind(this)
-    // }
-
-    // new method of binding is arrow function =>
-    // it's cleaner and simpler
     handleIncrement = () => {
-        console.log('Increment clicked', this);
-    }
+        //incrementing the state
+        this.setState({ count: this.state.count + 1 })
+    };
 
     render() {
         return (
