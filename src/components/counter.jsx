@@ -3,14 +3,20 @@ import React, { Component } from 'react';
 class Counter extends Component {
     state = {
         count: 0,
-        // using map() method to render
-        tags: ['tag1', 'tag2', 'tag3']
     };
 
-    renderTags() {
-        // handle the empty list case
-        if (this.state.tags.length === 0) return <p>No tags</p>; // or null
-        return <ul>{this.state.tags.map(tag => <li key={tag}>{tag}</li>)}</ul>;
+    // //constructor method of binding data (old)
+    // constructor() {
+    //     // the base contructor
+    //     super();
+    //     // binding data
+    //     this.handleIncrement = this.handleIncrement.bind(this)
+    // }
+
+    // new method of binding is arrow function =>
+    // it's cleaner and simpler
+    handleIncrement = () => {
+        console.log('Increment clicked', this);
     }
 
     render() {
@@ -19,8 +25,8 @@ class Counter extends Component {
             // length is bool, 
             // && is looking at the first condition and the second
             <React.Fragment>
-                {this.state.tags.length === 0 && "Please create a new tag"}
-                {this.renderTags()}
+                <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
+                <button onClick={this.handleIncrement} className="btn btn-secondary btn-sm">Increment</button>
             </React.Fragment >
         );
     }
