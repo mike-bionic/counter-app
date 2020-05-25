@@ -3,9 +3,21 @@ import React, { Component } from 'react';
 class Counter extends Component {
     state = {
         count: 0,
-        // using map() method to render
-        tags: ['tag1', 'tag2', 'tag3']
     };
+
+    // //constructor method of binding data (old)
+    // constructor() {
+    //     // the base contructor
+    //     super();
+    //     // binding data
+    //     this.handleIncrement = this.handleIncrement.bind(this)
+    // }
+
+    // new method of binding is arrow function =>
+    // it's cleaner and simpler
+    handleIncrement = () => {
+        console.log('Increment clicked', this);
+    }
 
     render() {
         // let classes = this.getBadgeClasses();
@@ -14,10 +26,7 @@ class Counter extends Component {
             // to use the method without defining again
             <React.Fragment>
                 <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
-                <button className="btn btn-secondary btn-sm">Increment</button>
-                <ul>
-                    {this.state.tags.map(tag => <li key={tag}>{tag}</li>)}
-                </ul>
+                <button onClick={this.handleIncrement} className="btn btn-secondary btn-sm">Increment</button>
             </React.Fragment >
         );
     }
