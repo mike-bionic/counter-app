@@ -5,29 +5,25 @@ class Counter extends Component {
         count: 0,
     };
 
-    // //constructor method of binding data (old)
-    // constructor() {
-    //     // the base contructor
-    //     super();
-    //     // binding data
-    //     this.handleIncrement = this.handleIncrement.bind(this)
-    // }
-
-    // new method of binding is arrow function =>
-    // it's cleaner and simpler
-    handleIncrement = () => {
-        console.log('Increment clicked', this);
-    }
+    handleIncrement = product => {
+        console.log(product);
+        //incrementing the state
+        this.setState({ count: this.state.count + 1 })
+    };
 
     render() {
         // let classes = this.getBadgeClasses();
         return (
             // we can directly write this.getBadgeClasses() 
             // to use the method without defining again
-            <React.Fragment>
+            <div>
                 <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
-                <button onClick={this.handleIncrement} className="btn btn-secondary btn-sm">Increment</button>
-            </React.Fragment >
+                <button
+                    onClick={() => this.handleIncrement({ id: 1 })}
+                    className="btn btn-secondary btn-sm">
+                    Increment
+                </button>
+            </div>
         );
     }
     // this method was inside render() before we extracted it
