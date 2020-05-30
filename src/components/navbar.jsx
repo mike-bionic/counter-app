@@ -7,6 +7,8 @@ import React, { Component } from 'react';
 // but we can destruct it and get just totalCounters:
 
 const NavBar = ({totalCounters}) => {
+	// we cant use lifecycle hooks in fucntioanl components
+	console.log('NavBar - Rendered')
 	return (
 		<nav className="navbar navbar-light bg-light">
 			<a className="navbar-brand" href="#">

@@ -13,6 +13,23 @@ class App extends Component {
     ]
   };
 
+  constructor(props) {
+    // calling constructers of a parent class
+    // initializing properties of instance
+    super(props);
+    console.log('App-Constructor');
+    // "this.state = this.props.something"
+    // to get access to this.props we should dd it to 
+    // constructor(props)
+    // super(props)
+  };
+
+  componentDidMount() {
+    // future example after ajax
+    // this.setState({ movies })
+    console.log("App-Mounted");
+  };
+
   handleIncrement = counter => {
     // diffen objects "..." spread operator to clone the whole state
     const counters = [...this.state.counters];
@@ -40,6 +57,7 @@ class App extends Component {
   };
 
   render() {
+    console.log('App-Rendered');
     // we could say this.state.counters.length
     return (
       <React.Fragment>
