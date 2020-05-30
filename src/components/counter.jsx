@@ -4,12 +4,11 @@ class Counter extends Component {
 		state = {
 				// setting the falue to a count component
 				// props is the method of passing attributes
-				value: this.props.value,
+				// prefix 'counter' to get the counters info
+				value: this.props.counter.value,
 		};
 
 		handleIncrement = product => {
-				console.log(product);
-				//incrementing the state
 				this.setState({ value: this.state.value + 1 })
 		};
 
@@ -21,10 +20,12 @@ class Counter extends Component {
 						<div>
 								<span className={this.getBadgeClasses()}>{this.formatCount()}</span>
 								<button
-										onClick={() => this.handleIncrement({ id: 1 })}
-										className="btn btn-secondary btn-sm">
-										Increment
+									onClick={() => this.handleIncrement({ id: 1 })}
+									className="btn btn-secondary btn-sm">
+									Increment
 								</button>
+								<button onClick={() => this.props.onDelete(this.props.counter.id)} 
+								className="btn btn-danger btn-sm m-2">Delete</button>
 						</div>
 				);
 		}
