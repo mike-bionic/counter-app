@@ -9,12 +9,21 @@ class Counters extends Component {
 			{ id:3, value:0 },
 			{ id:4, value:0 }
 		]
-	}
+	};
+
+	handleIncrement = counter => {
+		// diffen objects "..." spread operator to clone the whole state
+		const counters = [...this.state.counters];
+		// find the index of current counter
+		const index = counters.indexOf(counter);
+		counters[index] = { ...counter };
+		counters[index].value++;
+		this.setState({ counters })
+	};
 
 	// counterId is for selecting which counter to delete
 	// id should be passed on counter.jsx
 	handleDelete = counterId => {
-		console.log("event handler called!",counterId);
 		const counters = this.state.counters.filter(c => c.id !== counterId);
 		this.setState({ counters });
 	};
@@ -38,6 +47,7 @@ class Counters extends Component {
 					<Counter 
 						key={counter.id} 
 						onDelete={this.handleDelete}
+						onIncrement={this.handleIncrement}
 						// passing all properties of counter in one go
 						counter={counter}
 					/>
